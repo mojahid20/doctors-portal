@@ -6,7 +6,7 @@ const Navbar = () => {
       <li><Link to="/about">About</Link></li>
       <li><Link to="/appointment">Appointment</Link></li>
       <li><Link to="/review">Review</Link></li>
-      <li><Link to="/constct us">Contact Us</Link></li>
+      <li><Link to="/constct Us">Contact Us</Link></li>
       <li><Link to="/login">Login</Link></li>
     
     </>
@@ -22,7 +22,7 @@ const Navbar = () => {
        
       </ul>
     </div>
-    <a class="btn btn-ghost normal-case text-xl">Doctors portal</a>
+    <Link to="/" class="btn btn-ghost normal-case text-xl">Doctors portal</Link>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal p-0">

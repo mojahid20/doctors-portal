@@ -10,25 +10,28 @@ const Testimonial = () => {
             id:1,
             name:"mojahid",
             deskcriptio:'',
+            location:'Dhaka',
             img:people1,
         },
         {
             id:2,
             name:"jamal",
             deskcriptio:'',
+            location:'Dhaka',
             img:people2,
         },
         {
             id:3,
             name:"hasan",
             deskcriptio:'',
+            location:'Dhaka',
             img:people3,
         },
     ]
     return (
         <section>
             <div className='flex justify-between items-center'>
-                <div>
+                <div className='text-center text-xl'>
                     <h3>Tstimonial</h3>
                     <h4>whats Our pations say</h4>
                 </div>

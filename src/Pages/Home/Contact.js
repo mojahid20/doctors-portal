@@ -8,9 +8,9 @@ const Contact = () => {
             backgroundSize:'cover',
             height:'600px'
         }}>
-        <div  className='w-80 mt-24 mx-auto text-white '>
+        <div  className='w-80 mt-24 mx-auto '>
             <div className='pt-5'>
-            <h4 className='text-xl font-bold text-light text-center '>Contact Us</h4>
+            <h4 className='text-xl font-bold text-light text-center text-white '>Contact Us</h4>
             <h1 className='text-3xl mb-4 text-center'>Sty Connected  With Us</h1>
             </div>
             <div class="form-control outline-none ">

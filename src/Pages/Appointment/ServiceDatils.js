@@ -3,9 +3,9 @@ import React from 'react';
 const ServiceDatils = ({service,setTreatment}) => {
     const {name, slots}=service;
     return (
-        <div class="card w-96 bg-base-100 shadow-xl">
-        <div class="card-body">
-          <h2 class="card-title">{name}</h2>
+        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card-body">
+          <h2 className="card-title">{name}</h2>
 
           <p>
               {
@@ -15,10 +15,10 @@ const ServiceDatils = ({service,setTreatment}) => {
               }
           </p>
           <p>{slots.length}{slots.length >1 ? 'spaces' :'space'}</p>
-          <div class="card-actions justify-end">
+          <div className="card-actions justify-end">
             
-             <label for="booking"  disabled ={slots.length===0}
-            onClick={()=> setTreatment(service)} class="btn btn-primary text-center">Book  Now</label>
+             <label htmlFor="booking"  disabled ={slots.length===0}
+            onClick={()=> setTreatment(service)} className="btn btn-primary text-center">Book  Now</label>
           </div>
         </div>
       </div>

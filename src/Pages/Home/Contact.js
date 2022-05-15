@@ -13,24 +13,24 @@ const Contact = () => {
             <h4 className='text-xl font-bold text-light text-center text-white '>Contact Us</h4>
             <h1 className='text-3xl mb-4 text-center'>Sty Connected  With Us</h1>
             </div>
-            <div class="form-control outline-none ">
-          <label class="label">
-            <span class="label-text">Email</span>
+            <div className="form-control outline-none ">
+          <label className="label">
+            <span className="label-text">Email</span>
           </label>
-          <input type="text" placeholder="email" class="input input-bordered" required />
+          <input type="text" placeholder="email" className="input input-bordered" required />
         </div>
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text">Password</span>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Password</span>
           </label>
-          <input type="text" placeholder="password" class="input input-bordered" required/>
-          <label class="label">
-          <span class="label-text">Massage</span></label>
+          <input type="text" placeholder="password" className="input input-bordered" required/>
+          <label className="label">
+          <span className="label-text">Massage</span></label>
          <textarea  name="massage" id="name" cols="20" rows="10" required placeholder='enter your text'
-         class="input input-bordered resize-none"></textarea>
-          <button class="btn btn-outline btn-primary mt-3">Button</button>
+         className="input input-bordered resize-none"></textarea>
+          <button className="btn btn-outline btn-primary mt-3">Button</button>
         </div>
-        <div class="form-control mt-6"></div>
+        <div className="form-control mt-6"></div>
         </div>
         </div>
     );

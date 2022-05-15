@@ -1,38 +1,36 @@
-
 import React from 'react';
-import {useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from "react-router-dom";
 import auth from '../firebase.init'
 import { useForm } from "react-hook-form";
 
-
-
-const Login = () => {
+const Register = () => {
     const [signInWithGoogle, guser,gloading] = useSignInWithGoogle(auth);
-    const { register, formState: {}, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit } = useForm();
     const [
-        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
         user,
         loading,
-        
-      ] = useSignInWithEmailAndPassword(auth);
-
-      const navigate = useNavigate();
-      const location= useLocation();
-
-      const  from = location.state?.from?.pathname || "/";
-     if(loading || gloading ){
+        error,
+      ] = useCreateUserWithEmailAndPassword(auth);
+      const [updateProfile, updating, updateerror] = useUpdateProfile(auth);
+      const navigate= useNavigate();
+    
+   if(loading || gloading || updateerror ){
        return <button className="btn loading">loading</button>
    }
-    if (user || guser) {
+    if (guser) {
         
-      navigate(from, { replace: true });
+         console.log(guser);
         
       }
 
-      const onSubmit = data =>{
-     
-      signInWithEmailAndPassword(data.email, data.password);
+      const onSubmit = async  data =>{
+      console.log(data);
+      await createUserWithEmailAndPassword(data.email, data.password);
+      await updateProfile({ displayName:data.name });
+      console.log('update done')
+      navigate('/appointment');
       }
     return (
         <div>
@@ -41,9 +39,31 @@ const Login = () => {
             
             <div className="card w-96 bg-base-100 shadow-xl text-primary-content">
             <div className="card-body"> 
-            <h3 className='text-center text-2xl'>Login</h3>
+            <h3 className='text-center text-2xl'>Register</h3>
             <form onSubmit={handleSubmit(onSubmit)}>
 
+            <div className="form-control w-full max-w-xs">
+            <label className="label">
+                <span className="label-text">Name</span>
+                
+            </label>
+            <input type="name" placeholder="enter name"
+            {...register("name", {
+                required:{
+                    value: true,
+                    message:'name is required'
+                },
+                pattern: {
+                  value: /[A-Za-z]{3}/,
+                  message: 'provide a valid name'
+                }
+              })}
+             className="input input-bordered w-full max-w-xs" />
+            <label className="label">
+               
+                
+            </label>
+            </div>
             <div className="form-control w-full max-w-xs">
             <label className="label">
                 <span className="label-text">Email</span>
@@ -97,14 +117,12 @@ const Login = () => {
                 
             </label>
             </div>
-          <input className='btn w-full max-w-xs' type="submit" value='Login' />
+          <input className='btn w-full max-w-xs' type="submit" value='Register' />
             </form>
             <div className="divider">OR</div>
-          <p  className='text-center mb-4'>are you new? <Link to='/register'>create new account</Link> </p>
+          <p  className='text-center mb-4'> All ready have ac account? <Link to='/login'>pleace Login</Link> </p>
             
-             <div className="card-actions justify-center">
-             <button onClick={() => signInWithGoogle()} className="btn">Sign With Google</button>
-          </div>
+            
         </div>
       </div>
               </div>
@@ -112,4 +130,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
